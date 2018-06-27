@@ -1,0 +1,51 @@
+var monthtlyEnumeration = read<real>("Your Powel compensation net B2B?");
+
+var averageDaysInMonth = 21;
+
+var daysSickInYear = 10;
+var daysVacationInYear = 30;
+
+var overtimeMultiplier = 1.5;
+
+var dailyRate = monthtlyEnumeration/averageDaysInMonth;
+var overtimeDailyRate = dailyRate · overtimeMultiplier;
+
+var hourlyRate = dailyRate/8;
+var overtimeHourlyRate = hourlyRate · overtimeMultiplier;
+
+
+var paidLunchHourAddition = 1 · overtimeHourlyRate · averageDaysInMonth;
+
+// we exchange vacations for money using overtime rate
+var vacationTimeAddition = (daysVacationInYear · overtimeMultiplier · dailyRate) / 12;
+
+// sick time is calculated using normal rate
+var sickTimeAddition = (daysSickInYear · dailyRate) / 12;
+
+var numberOfConferences = 1;
+var averageConferenceCost = 5000;
+
+var conferenceAddition = numberOfConferences · averageConferenceCost / 12;
+
+
+var numberOfNorwegianHoursPerWeek = 1;
+var numberOfEnglishHoursPerWeek = 1;
+
+var norwegianAverageHourlyRate = 60;
+var englishAverageHourlyRate = 50;
+
+
+var norwegianLessonsAddition = numberOfNorwegianHoursPerWeek · (norwegianAverageHourlyRate + overtimeHourlyRate) · averageDaysInMonth/5;
+
+var englishLessonsAddition = numberOfEnglishHoursPerWeek · (englishAverageHourlyRate + overtimeHourlyRate) · averageDaysInMonth/5;
+
+var totalPay = monthtlyEnumeration
+			   + paidLunchHourAddition
+			   + vacationTimeAddition
+			   + sickTimeAddition
+			   + conferenceAddition
+			   + englishLessonsAddition
+			   + norwegianLessonsAddition;
+
+
+show(totalPay, "Your real™ compensation net B2B");
