@@ -35,9 +35,9 @@ var norwegianAverageHourlyRate = 60;
 var englishAverageHourlyRate = 50;
 
 
-var norwegianLessonsAddition = numberOfNorwegianHoursPerWeek · (norwegianAverageHourlyRate + overtimeHourlyRate) · averageDaysInMonth/5;
+var norwegianLessonsAddition = numberOfNorwegianHoursPerWeek · norwegianAverageHourlyRate · averageDaysInMonth/5;
 
-var englishLessonsAddition = numberOfEnglishHoursPerWeek · (englishAverageHourlyRate + overtimeHourlyRate) · averageDaysInMonth/5;
+var englishLessonsAddition = numberOfEnglishHoursPerWeek · englishAverageHourlyRate · averageDaysInMonth/5;
 
 var totalPay = monthtlyEnumeration
 			   + paidLunchHourAddition
